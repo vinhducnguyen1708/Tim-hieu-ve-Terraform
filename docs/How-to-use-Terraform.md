@@ -22,7 +22,17 @@ terraform -v
 ```
 
 # Thực hiện tạo Configuration file trong Terraform
-*Thực hiện khởi tạo các resource trên hệ thống Cloud Openstack*
+*Thực hiện khởi tạo các resource trên hệ thống Cloud Openstack đã có sẵn với các thông tin sau đây*
+```sh
+OS_USERNAME=admin
+OS_PASSWORD=Welcome123
+OS_PROJECT_NAME=admin
+OS_USER_DOMAIN_NAME=Default
+OS_PROJECT_DOMAIN_NAME=Default
+OS_AUTH_URL=http://controller:5000/v3
+OS_IDENTITY_API_VERSION=3
+```
+
 - B1: Tạo thư mục chứa projects:
 ```sh
 mkdir terraform_openstack && cd $_
@@ -30,7 +40,7 @@ mkdir terraform_openstack && cd $_
 
 - B2: Tạo file `provider.tf` với nội dung
 
-```json
+```t
 provider "openstack" {
   user_name   = "admin"
   tenant_name = "admin"
@@ -46,7 +56,7 @@ provider "openstack" {
  *Với mỗi một cloud provider ta sẽ đều phải khai báo như vậy để xác thực, kết nối được với cloud provider đó*
 
 - B3: Tạo file `create_network.tf` với nội dung:
-    ```json
+    ```t
     resource "openstack_networking_network_v2" "network_1" {
     name           = "network_terraform"
     admin_state_up = "true"
@@ -97,7 +107,7 @@ terraform apply
 mkdir -p /root/terraform_openstack/modules/flavor/
 ```
 - B2: Tạo file `/root/terraform_openstack/modules/flavor/main.tf` với nội dung:
-```json
+```t
 resource "openstack_compute_flavor_v2" "create_vinh_flavor" {
   name  = "vinh-flavor"
   ram   = "512"
@@ -107,7 +117,7 @@ resource "openstack_compute_flavor_v2" "create_vinh_flavor" {
 }
 ```
 - B3: Thêm vào file `provider.tf` với nội dung
-```json
+```t
 ...
 module "flavor" {
     source = "/root/terraform_openstack/modules/flavor"
@@ -115,7 +125,7 @@ module "flavor" {
 ```
 
 - B4: Tạo file `/root/terraform_openstack/modules/flavor/variables.tf` với nội dung
-```json
+```t
 variable "disk_flavor" {
   description = "The number of disk to use for flavor"
   default = "10"
