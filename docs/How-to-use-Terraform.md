@@ -112,7 +112,7 @@ resource "openstack_compute_flavor_v2" "create_vinh_flavor" {
   name  = "vinh-flavor"
   ram   = "512"
   vcpus = "1"
-  disk  = "5"
+  disk  = "${var.disk_flavor}"
   region = "Hanoi"
 }
 ```
