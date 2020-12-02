@@ -8,7 +8,7 @@
 
 # 1. Terraform là gì 
 
-- Terraform là một phần mêm công mã nguồn mở "Infrastructure as Code", được viết bằng ngôn ngữ Golang. được tạo ra và phát triển  bởi HashiCorp.
+- Terraform là một phần mềm công cụ mã nguồn mở "Infrastructure as Code", được viết bằng ngôn ngữ Golang. được tạo ra và phát triển  bởi HashiCorp.
 
 - Terraform là một công cụ coding dạng khai báo, Terraform cho phép các lập trình viên sử dụng ngôn ngữ cấu hình bậc cao gọi là HCL ( HashiCorp Configuration Language ) để diễn tả trạng thái mong muốn cuối cùng của các ứng dụng chạy trên trên hạ tầng cloud. Nó đưa ra một kết hoạch để đạt được đến trạng thái cuối và thực thi các kế hoạch cho việc khởi tạo hạ tầng.
 
